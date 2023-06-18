@@ -1,0 +1,21 @@
+const mongoose = require('mongoose');
+
+const dbConnection = async ()=> {
+    try {
+        await mongoose.connect(process.env.DB_CNN,{
+            useNewUrlParser:true,
+            useUnifiedTopology:true,
+            
+    });
+    
+    console.log('DB Online');
+
+
+    }catch(error){
+        console.log(error);
+        throw new Error('eror en la base de datos - contact support');
+    }
+}
+module.exports = {
+    dbConnection
+}
